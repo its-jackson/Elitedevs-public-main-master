@@ -1,0 +1,80 @@
+<% include ../partials/header.ejs %>
+<% include ../partials/backgroundloop.ejs %> 
+<% include ../partials/main_nav.ejs %>
+
+<main class="container min-vh-100 p-5" style="min-width: 578px;">
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-sm-10 text-center justify-content-center jumbotron py-5">
+                <% if(!survey.expired) { %>
+                    <div class="row text-center justify-content-center h1"><%= title %> for</div>
+                <% } %>
+                <div class="row text-center justify-content-center survey-title h1"><%= survey.title %></div>   
+            <br>
+            <div class="jumbotron pt-4 pb-0">
+                <form class="form px-3" method="post" id="surveyForm">
+                    <fieldset id="mainFieldset" class="pb-2">
+                        <input name="surveyTitle" value="<%= survey.title %> " hidden/>
+                        <% for(let count = 0; count < survey.questionlist.length; count++) { %>
+                            <% let question = survey.questionlist[count] %>
+                            <% let questionGroupId = "questionGroup" + count %>
+                        
+                        <div class="form-group" id="<%= questionGroupId %>">
+                            <div class="row">
+                                <%= question.text %>
+                                <input style="background-color: #E0D6C8;" hidden name="response[<%= count %>][question]" value="<%= question.text %>">
+                            </div>
+                            <div class="row pb-4">
+                        <% if(question.type == "select") { %>
+
+                            <select style="background-color: #E0D6C8;" id="answerinput<%= count %>" name="response[<%= count %>][answer]" class="form-control" required>
+                                <!--nothing for this yet finish in another sprint-->
+                                <option value="default">Default</option>
+                            </select>
+                        
+                        <% } else if(question.type == "trueOrFalse") { %>
+
+                            <select style="background-color: #E0D6C8;" id="answerinput<%= count %>" name="response[<%= count %>][answer]" class="form-control" required>
+                                <option value="" selected disabled hidden>Click to Select</option>
+                                <option value="true">True</option>
+                                <option value="false">False</option>
+                            </select>
+                        
+                        <% } else if(question.type == "textarea") { %>
+                        
+                            <textarea style="background-color: #E0D6C8;" id="answerinput<%= count %>" name="response[<%= count %>][answer]" class="form-control" rows="5" required></textarea>
+                        
+                        <% } else if(question.type == "message") { %>
+
+                        <% } else { %>
+                        
+                            <input style="background-color: #E0D6C8;" type="<%= question.type %>" id="answerinput<%= count %>" name="response[<%= count %>][answer]" class="form-control" required/>
+                        
+                        <% } %>
+                            </div>
+                        <% } %>
+                    </fieldset>
+                </div>
+
+                    <% if (!survey.expired) { %>
+                    <fieldset class="form-group text-center">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 col-sm-10 pb-3">
+                                <button type="submit" class="btn btn-primary w-100"><i class="fas fa-paper-plane"></i>&nbsp;&nbsp;&nbsp; Submit</button>
+                            </div>
+                            <div class="col-md-6 col-sm-10">
+                                <a href="/" class="btn btn-warning w-100"><i class="fa fa-undo"></i>&nbsp;&nbsp;&nbsp; Cancel</a>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <% } %>
+                </form>
+        </div>
+    </div>
+</main>
+
+<script>
+ 
+</script>
+
+<% include ../partials/bottom_nav.ejs %>
+<% include ../partials/footer.ejs %>

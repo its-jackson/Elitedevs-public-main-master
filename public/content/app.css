@@ -1,0 +1,264 @@
+html{
+  scroll-behavior: smooth;
+}
+
+#backgroundVid{
+
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -10;
+  /* background-attachment: fixed; */
+}
+
+body {
+  /* padding: 50px; */
+  /* background-image: url('/assets/images/backgroundimage.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; */
+  /* background-color: #24292E; */
+  font: 16px "Teko", Helvetica, Arial, sans-serif;
+  color: #FEF4E7;
+  letter-spacing: 0.7px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+main{
+  text-shadow: 0.5px 0.5px 0.6px #0000009b;
+  font-size: 22px;
+}
+
+table.jumbotron{
+  background-color: #24292ea9;
+  border-radius: 0;
+}
+
+table { 
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  /* border: 1px solid #E0D5C7; */
+  border-collapse: separate;
+  border-radius: 8px;
+  border-spacing: 0px;
+  table-layout: fixed;
+  max-width: 700px;
+  border-bottom-left-radius: 0%; 
+  border-bottom-right-radius: 0%;
+}
+.col1 {
+  width: 85px;
+}
+.col2 {
+  width: 85px;
+}
+.col3 {
+  width: 35px;
+}
+.col4 {
+  width: 35px;
+}
+thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+  border-collapse: separate;
+}
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+th, td {
+  padding: 5px 4px 6px 4px; 
+  text-align: center;
+  padding: 10px;
+}
+th {
+  font-size: 1.5rem;
+}
+td {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+td, td a {
+  font-size: 1rem;
+  font-weight: 500;
+}
+tr:nth-child(even) {
+  background-color: #12181fa2;
+}
+th p {
+  margin: 0px;
+}
+table thead th {
+  padding: 0px;
+  height: 4rem;
+}
+
+a {
+  color: #3F382F; 
+}
+a:hover {
+  color: #F4A33C;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6, p, table, a, button {
+  color: #FEF4E7;
+  font-family: 'Teko', sans-serif;
+}
+
+.btn-new {
+  background-color: #9B5908; 
+  border-color: #9B5908;
+  max-width: 700px; 
+  display: block; 
+  margin-left: auto; 
+  margin-right: auto;
+}
+.btn-new:hover {
+  background-color: #F59E31;
+  color: #24292e;
+}
+.btn-line {
+  width: 100%;
+}
+.btn-view {
+  background-color: #CCA674;
+  border-color: #CCA674;
+  color: #24292E;
+}
+.btn-view:hover {
+  background-color: #9B5908;
+  border-color: #9B5908;
+  color: #FEF3E6;
+}
+.btn-edit {
+  color: #F59E31;
+}
+.btn-delete {
+  color: #ED6007;
+}
+.btn-sml {
+  font-size: 0.85rem; 
+}
+.div-flex {
+  margin-left: 0px; 
+  margin-right: 0px; 
+  display: flex;
+}
+.div-width-half {
+  width: 44%;
+}
+.div-margin-left {
+  margin-left: 2%
+}
+.div-btn-holder {
+  width: 10%; position: relative;
+}
+.btn-delete-question {
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: #ED6007;
+  font-size: 1.5rem;
+}
+.form-group-twiks {
+  margin-bottom: 10px;
+}
+
+.jumbotron{
+  background-color: #fef3e618;
+  /* border-radius: 0 !important; */
+  /* box-shadow: 0px 3px 3px 1px #F59E31; */
+  box-shadow: rgba(0,0,0,0.4) 0px 1px 3px 2px;
+  border-radius: 2px;
+  border: 0.2px solid rgba(204, 204, 204, 0.63); 
+}
+
+.jumbotron .jumbotron{
+  background-color: #24292ea9;
+  box-shadow: rgba(0,0,0,0.4) 0px 2px 2px 1px;
+  border-radius: 0 !important;
+  border: none;
+}
+
+.survey-title{
+  color: #F4A33C;
+}
+
+.navbar-brand{
+  font-family: 'Big Shoulders Stencil Text', sans-serif;
+}
+
+#typewriter span{
+  border-right: .2em solid #ED6007;
+  animation: caret 1s steps(1) infinite;
+}
+
+@keyframes caret {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.btn{
+  border-radius: 0%;
+}
+
+table .btn{
+  box-shadow: rgba(0,0,0,0.4) 0px 1px 2px 1px;
+}
+
+input[type=text]{
+  background-color: #E0D6C8;
+}
+
+.withBackGround {
+  background: #24292E !important;
+  display: none;
+}
+
+.btn-accept {
+  background-color: #1C90C9;
+  border-color: #1C90C9;
+}
+.btn-cancel {
+  background-color: #F59E31;
+  border-color: #F59E31;
+}
+.btn-accept:hover {
+  background-color: #076A9C;
+  border-color: #076A9C;
+}
+.btn-cancel:hover {
+  background-color: #9B5908;
+  border-color: #9B5908;
+}
+
+.link-btn {
+  display: block;
+  padding: .52rem 0rem;
+}
+.link-accept {
+  color: #1C90C9;
+}
+.link-cancel {
+  color: #F59E31;
+}
+.link-accept:hover {
+  color: #076A9C;
+}
+.link-cancel:hover {
+  color: #9B5908;
+}
+
+

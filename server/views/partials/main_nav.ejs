@@ -1,0 +1,39 @@
+<!--Main Nav-->
+
+<nav class="navbar navbar-expand-md navbar-dark" style="min-width: 578px;">
+  <a class="navbar-brand" href="/"><img src="/assets/images/elite-devs-thumb.png" alt="Elite Devs Logo" height="60px"
+      width="auto"> Elite Devs</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <% if(title == "Available Surveys") { %>
+        <li class="nav-item active">
+      <% } else { %>
+        <li class="nav-item">
+      <% } %>
+      <a class="nav-link px-3" href="/"><i class="fas fa-lg fa-home"></i>&nbsp;&nbsp;&nbsp; Home </a>
+      </li>
+      <% if (typeof displayName == 'string' && displayName) { %>
+        <% if(title == "Survey List") { %>
+          <li class="nav-item active">
+        <% } else { %>
+          <li class="nav-item">
+        <% } %>
+        <a class="nav-link px-3" href="/survey"><i class="fas fa-lg fa-poll-h"></i>&nbsp;&nbsp;&nbsp; Surveys</a>
+        </li>
+        <li class="navbar-text px-3" style="color: #1C90C9;"><i class="fas fa-lg fa-user"></i>&nbsp;&nbsp;&nbsp; <%= displayName %></li>
+        <li class="nav-item px-3"><a href="/logout" class="link-btn link-cancel">
+          <i class="fas fa-lg fa-sign-out-alt"></i>&nbsp;&nbsp;&nbsp; Logout</a>
+        </li>
+      <% } else { %>
+      <li class="nav-item px-3"><a href="/login" class="link-btn link-accept">
+        <i class="fas fa-lg fa-sign-in-alt"></i>&nbsp;&nbsp;&nbsp; Login</a>
+      </li>
+      <% } %>
+
+  </div>
+</nav>

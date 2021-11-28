@@ -1,0 +1,78 @@
+<% include ../partials/header.ejs %> <% include ../partials/backgroundloop.ejs
+%> <% include ../partials/main_nav.ejs %>
+
+<main class="container min-vh-100 p-5" style="min-width: 578px">
+  <!-- Message Area -->
+  <% if(message.length > 0) { %>
+  <div class="row justify-content-center p-5">
+    <div class="col-6 text-center justify-content-center">
+      <div class="alert alert-danger text-center"><%= message %></div>
+    </div>
+  </div>
+  <% } %>
+
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-sm-10 jumbotron py-5">
+      <div class="row text-center justify-content-center">
+        <div class="col-md-10 col-sm-10 justify-content-center pb-5">
+          <h1>Log In</h1>
+        </div>
+      </div>
+      <form class="jumbotron py-4" method="post" autocomplete="off">
+        <fieldset class="form-group">
+          <label for="username">Username</label>
+          <input
+            style="background-color: #e0d6c8"
+            type="text"
+            class="form-control"
+            name="username"
+            placeholder="Enter username"
+            id="username"
+            required
+            autofocus
+          />
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="password">Password</label>
+          <input
+            style="background-color: #e0d6c8"
+            type="password"
+            class="form-control"
+            name="password"
+            placeholder="Enter password"
+            id="password"
+            required
+            autofocus
+          />
+          <br />
+          <h6>
+            Don't have an account?
+            <a href="/register">Register an account here!</a>
+          </h6>
+        </fieldset>
+        <fieldset class="form-group text-center">
+          <div class="row justify-content-center pt-4 pb-0">
+            <div class="col-md-6 col-sm-10 pb-3">
+              <input
+                type="submit"
+                class="btn btn-success w-100 btn-accept"
+                value="Login"
+              />
+            </div>
+            <div class="col-md-6 col-sm-10">
+              <a href="/">
+                <input
+                  type="button"
+                  class="btn btn-warning w-100 btn-cancel"
+                  value="Cancel"
+                />
+              </a>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</main>
+
+<% include ../partials/bottom_nav.ejs %> <% include ../partials/footer.ejs %>

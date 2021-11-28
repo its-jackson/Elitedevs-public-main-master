@@ -1,0 +1,40 @@
+<% include ../partials/header.ejs %>
+<% include ../partials/backgroundloop.ejs %> 
+<% include ../partials/main_nav.ejs %>
+
+<main class="container min-vh-100 p-5" style="min-width: 578px;">
+    <div class="col-md-12 col-sm-10 justify-content-center pb-5">
+        <div class="row text-center justify-content-center h1"><%= title %> for</div>
+        <div class="row text-center justify-content-center survey-title h1"><%= response.surveytitle %></div>   
+        <br>
+    </div>
+    <!-- not sure how to display this page to look professional yet, will come back to it -->
+    <% for(let count = 0; count < response.answers.length; count++) { %>
+        <% let question = response.answers[count].questiontext %>
+        <% let answer = response.answers[count].answertext %>
+        <div class="row justify-content-center">
+        <div class="col-md-8 col-sm-10">
+            <div class="jumbotron py-3">
+            <div class="row text-center justify-content-center">
+                <h4 style="color: #CCA674;"><%= count+1 %>.&emsp;<%= question %></h4>
+            </div>
+            <div class="row text-center justify-content-center">
+                <% if(typeof answer !== "undefined" && answer.length > 0) { %>
+                    <%= answer %>
+                <% } else { %>
+                    <i>No answer provided</i>
+                <% } %>
+            </div>
+            </div>
+        </div>
+    </div>
+    <% } %>
+
+</main>
+
+<script>
+
+</script>
+
+<% include ../partials/bottom_nav.ejs %>
+<% include ../partials/footer.ejs %>

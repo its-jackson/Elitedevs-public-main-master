@@ -1,0 +1,74 @@
+<% include ../partials/header.ejs %>
+<% include ../partials/backgroundloop.ejs %> 
+<% include ../partials/main_nav.ejs %>
+
+<main class="container min-vh-100 p-5" style="min-width: 578px;">
+
+  
+    <div class="row align-items-center justify-content-center text-center">
+        <div class="col-md-8 col-sm-10 jumbotron">
+            <h1 style="text-align: center;"><%= title %></h1>
+            <br>
+            <table class="jumbotron p-0" style="min-width: 442px;">
+              <% for(let count = 0; count <  surveys.length; count++) { %>
+                <% let expiryStr = "None" %>
+                <% if(surveys[count].expiryDate) { %>
+                    <% expiryStr = surveys[count].expiryDate.toString().substr(0, 10) %>  
+                <% } %>
+                
+                <tr>
+                    <td>
+                        <a href="/survey/respond/<%= surveys[count]._id %>"> <%= surveys[count].title %> </a>
+                    </td>
+                    <td>
+                        Expiry Date: <%= expiryStr %>
+                    </td>
+                    <td style="min-width: 63px; width: 20%;">
+                        <a href="/survey/responses/<%= surveys[count]._id %>" class="btn btn-view btn-sml">Responses</a>
+                    </td>
+                    <td style="width: 18%;">
+                        <a class="btn btn-sml btn-accept" data-toggle="collapse" href="#collapseExample<%=surveys[count]._id%>" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            Options
+                        </a>
+                    </td>    
+                </tr>
+                <tr class="collapse" id="collapseExample<%=surveys[count]._id%>">                    
+                    <td class="col2">
+                        <div class="collapse" id="collapseExample<%=surveys[count]._id%>">
+                        <% if(surveys[count].visible) { %>
+                            <a href="/survey/togglevisible/<%= surveys[count]._id %>" class="btn btn-sml btn-success btn-accept">Public</a>
+                        <% } else { %>
+                            <a href="/survey/togglevisible/<%= surveys[count]._id %>" class="btn btn-sml btn-danger btn-cancel">Private</a>
+                        <% } %>
+                        </div>
+                    </td>
+                    <td class="col2">
+                        <div class="collapse" id="collapseExample<%=surveys[count]._id%>">
+                        <% if(surveys[count].enabled) { %>
+                            <a href="/survey/toggleenable/<%= surveys[count]._id %>" class="btn btn-sml btn-success btn-accept">Enabled</a>
+                        <% } else { %>
+                            <a href="/survey/toggleenable/<%= surveys[count]._id %>" class="btn btn-sml btn-danger btn-cancel">Disabled</a>
+                        <% } %>
+                        </div>
+                    </td>
+                    <td class="col3">
+                        <div class="collapse" id="collapseExample<%=surveys[count]._id%>">
+                        <a href="survey/edit/<%= surveys[count]._id %>" class="btn-edit"><i class="fas fa-pen"></i></a>
+                        </div>
+                    </td>
+                    <td class="col4">
+                        <div class="collapse" id="collapseExample<%=surveys[count]._id%>">
+                        <a href="survey/delete/<%= surveys[count]._id %>" class="btn-delete" id="deleteContact" name="deleteSurvey"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+                    </td>
+                </tr>
+                <% } %>
+            </table>
+            <a href="/survey/create" class="btn btn-primary btn-new btn-line" style="border-top-left-radius: 0%; border-top-right-radius: 0%; font-size: 1.3rem; padding: 10px;"><i class="fa fa-plus"></i> Create a Survey</a>
+    </div>
+  </div>
+</main>
+
+    
+<% include ../partials/bottom_nav.ejs %>
+<% include ../partials/footer.ejs %>

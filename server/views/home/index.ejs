@@ -1,0 +1,60 @@
+<% include ../partials/header.ejs %> <% include ../partials/backgroundloop.ejs
+%> <% include ../partials/main_nav.ejs %>
+
+<main class="container min-vh-100 pb-5" style="min-width: 578px">
+  <div
+    class="row min-vh-100 align-items-center justify-content-center text-center"
+  >
+    <div class="col">
+      <div class="pb-5">
+        <h1 class="display-2">Elite Surveys</h1>
+
+        <h5>Your Needs For Surveys</h5>
+      </div>
+      <div>
+        <div class="pb-1">
+          <a class="btn btn-info btn-lg pb-2" href="/register"
+            >Get Started &nbsp;&nbsp;<i class="fas fa-arrow-right"></i
+          ></a>
+        </div>
+        <br />
+        <h5>OR</h5>
+        <br />
+        <div class="h5 pt-1">
+          <a href="#available-surveys"
+            >Take Available Surveys
+            <br />
+            <i class="fas fa-arrow-circle-down"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    id="available-surveys"
+    class="row align-items-center justify-content-center text-center pt-5"
+  >
+    <div class="col-md-6 col-sm-10 jumbotron p-4" id="availableSurveys">
+      <div class="py-1">
+        <h1 class="display-2"><%= title %></h1>
+        <br />
+      </div>
+      <table class="jumbotron p-0">
+        <% for(let count = 0; count < surveys.length; count++) { %>
+        <tr>
+          <td>
+            <a href="/survey/respond/<%= surveys[count]._id %>">
+              <%= surveys[count].title %>
+            </a>
+          </td>
+          <td>By: <%= surveys[count].ownerName %></td>
+        </tr>
+        <% } %>
+      </table>
+    </div>
+  </div>
+</main>
+<script src="/scripts/app.js"></script>
+
+<% include ../partials/bottom_nav.ejs %> <% include ../partials/footer.ejs %>

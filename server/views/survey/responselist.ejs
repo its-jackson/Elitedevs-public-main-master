@@ -1,0 +1,97 @@
+<% include ../partials/header.ejs %>
+<% include ../partials/backgroundloop.ejs %> 
+<% include ../partials/main_nav.ejs %>
+
+<script>
+
+    window.onload = (event) => {
+        
+        document.getElementById('buttonPDF').addEventListener('click',function() {
+            
+            let PDF = new jspdf.jsPDF('p', 'pt', [919.3, 650]);
+            PDF = PDF.setCharSpace(40);
+            let element = document.getElementById('PDFcontainer');
+            let cloneElement = element.cloneNode(true);
+            cloneElement.style.display = 'block';
+            cloneElement.style.width = '630px';
+
+            PDF.html(cloneElement, {
+                callback: function (doc) { 
+                    doc.save(); 
+                },
+                x: 10, 
+                y: 10
+            });
+        });
+    };
+
+    
+
+</script>
+
+<main class="container min-vh-100 p-5" style="min-width: 578px;">
+    <div class="row justify-content-center">
+    <div class="col-md-8 col-sm-10 text-center justify-content-center pb-5 jumbotron">
+        <div class="row text-center justify-content-center h1"><%= title %> for</div>
+        <div class="row text-center justify-content-center survey-title h1"><%= surveytitle %></div>   
+        <br>
+        <table class="jumbotron p-0">
+            <tr>
+                <th>
+                    Response Link
+                </th>
+                <th>
+                    Response id
+                </th>
+            </tr>
+            <% for(let count = 0; count <  responses.length; count++) { %>
+                <tr>
+                    <td>
+                        <a href="/survey/answers/<%= responses[count]._id %>">
+                            Click to see answers
+                        </a>
+                    </td>
+                    <td>
+                        <%= responses[count]._id %>
+                    </td>
+                </tr>
+                <% } %>
+            </table>
+            <button class="btn btn-primary btn-new btn-line" id="buttonPDF" style="border-top-left-radius: 0%; border-top-right-radius: 0%; font-size: 1.3rem; padding: 10px;">Download PDF</button>
+    </div>
+    </div>
+            <div id="PDFcontainer" class="withBackGround">
+                <table>
+                    
+                    <tr>
+                        <th colspan="2"><%= surveytitle %></th>
+                    </tr>
+                    
+                    <% for (let countRes = 0; countRes <  responses.length; countRes++) { %>
+                <tr>
+                    <td colspan="2">
+                        ID: <%= responses[countRes]._id %>
+                    </td>
+                </tr>
+                <% for (let countAns = 0; countAns <  responses[countRes].answers.length; countAns++) { %>
+                    <tr>
+                        <td>
+                            <%= responses[countRes].answers[countAns].questiontext%>
+                        </td>
+                        <td>
+                            <%= responses[countRes].answers[countAns].answertext%>
+                        </td>
+                    </tr>
+                
+                <% } %>
+            <% } %>
+        
+        </table>
+    </div>
+    
+    
+</main>
+
+
+<% include ../partials/bottom_nav.ejs %>
+<% include ../partials/footer.ejs %>
